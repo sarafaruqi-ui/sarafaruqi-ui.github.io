@@ -50,12 +50,13 @@ section { padding: 4rem 0; border-bottom: 0.5px solid var(--rule); }
 .tag.before { color: var(--ink-muted); }
 .tag.after { color: var(--accent); }
 
-.scroll-gallery { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.scroll-gallery { display: flex; align-items: flex-start; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
 .scroll-gallery::-webkit-scrollbar { height: 6px; }
 .scroll-gallery::-webkit-scrollbar-track { background: transparent; }
 .scroll-gallery::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
 .scroll-gallery figure { flex: 0 0 auto; width: 340px; scroll-snap-align: start; margin: 0; }
 .scroll-gallery img { width: 100%; display: block; border: 0.5px solid var(--rule); }
+.scroll-gallery figure.fullpage img { height: 440px; object-fit: cover; object-position: top; }
 .scroll-gallery figcaption { margin-top: 0.7rem; font-size: 0.72rem; color: var(--ink-muted); }
 
 .full-bleed { margin-bottom: 2.5rem; }
@@ -194,6 +195,16 @@ footer { padding: 2rem 0; border-top: none; display: flex; justify-content: spac
   <p class="section-intro">The relaunch kept the mission-first framing BCtA was known for, but rebuilt everything underneath it: a co-branded identity with UNDP, a lighter and more editorial visual language, and a structure built to scale as the network grew. Scroll to compare.</p>
 
   <div class="scroll-gallery">
+    <figure class="fullpage">
+      <span class="tag before">2019</span>
+      <img src="2019-fullpage.jpg" alt="Full 2019 BCtA homepage, archived October 2019, showing the entire page top to bottom">
+      <figcaption>Full page, 2019</figcaption>
+    </figure>
+    <figure class="fullpage">
+      <span class="tag after">2021</span>
+      <img src="2021-fullpage.jpg" alt="Full 2021 BCtA homepage, archived September 2021, showing the entire page top to bottom">
+      <figcaption>Full page, 2021</figcaption>
+    </figure>
     <figure>
       <span class="tag before">2019</span>
       <img src="2019-hero.jpg" alt="2019 homepage hero with stock photography and orange become-a-member CTA">
