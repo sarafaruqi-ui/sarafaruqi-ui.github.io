@@ -4,346 +4,273 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BCtA Website Relaunch — Sara Faruqi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#1a1a1a;
-    --gray:#6b6b6b;
-    --line:#e2e2e2;
-    --bg:#ffffff;
-    --accent:#c1442d; /* muted terracotta, echoes BCtA orange without copying it */
-    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
-    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    font-family:var(--sans);
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;}
-  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F6F3EC; --ink: #1C1F1A; --ink-muted: #6A6E64; --rule: #CDD0C5; --accent: #2E5E3A;
+  --accent-light: rgba(46,94,58,0.08);
+  --serif: 'Playfair Display', Georgia, serif; --mono: 'DM Mono', monospace;
+}
+body { background: var(--cream); color: var(--ink); font-family: var(--mono); font-weight: 300; letter-spacing: 0.01em; min-height: 100vh; }
+a { color: inherit; }
 
-  header.site{
-    padding:28px 0 20px;
-    border-bottom:1px solid var(--line);
-  }
-  header.site .wrap{display:flex; justify-content:space-between; align-items:center;}
-  header.site .name{font-weight:600; letter-spacing:0.02em; font-size:15px;}
-  header.site nav a{
-    font-size:13px; text-decoration:none; color:var(--gray); margin-left:22px;
-    text-transform:uppercase; letter-spacing:0.06em;
-  }
-  header.site nav a:hover{color:var(--ink);}
+nav { display: flex; justify-content: space-between; align-items: baseline; padding: 2rem 3rem; border-bottom: 0.5px solid var(--rule); flex-wrap: wrap; gap: 1rem; }
+.nav-name { font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.02em; text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: 1.4rem; list-style: none; flex-wrap: wrap; }
+.nav-links a { text-decoration: none; color: var(--ink-muted); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.current { color: var(--accent); }
 
-  .hero{padding:64px 0 40px;}
-  .eyebrow{
-    font-size:12px; text-transform:uppercase; letter-spacing:0.12em;
-    color:var(--accent); font-weight:600; margin-bottom:14px;
-  }
-  h1{
-    font-family:var(--serif);
-    font-weight:400;
-    font-size:42px;
-    line-height:1.15;
-    margin:0 0 18px;
-    max-width:14ch;
-  }
-  h1 em{font-style:italic; color:var(--accent);}
-  .dek{
-    font-size:18px; color:#3c3c3c; max-width:60ch; margin:0 0 28px;
-  }
-  .meta-row{
-    display:flex; gap:40px; flex-wrap:wrap;
-    padding:24px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    margin-bottom:56px;
-  }
-  .meta-item .label{font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--gray); margin-bottom:4px;}
-  .meta-item .value{font-size:15px; font-weight:500;}
+.hero { padding: 5rem 3rem 3rem; border-bottom: 0.5px solid var(--rule); }
+.hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+.hero-title { font-family: var(--serif); font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1.12; font-weight: 400; margin-bottom: 1.6rem; max-width: 16ch; }
+.hero-title em { font-style: italic; color: var(--ink-muted); }
+.hero-desc { font-size: 0.85rem; line-height: 1.85; color: var(--ink-muted); max-width: 62ch; }
 
-  section{margin-bottom:72px;}
-  h2{
-    font-family:var(--serif); font-weight:400; font-size:26px; margin:0 0 8px;
-  }
-  .section-intro{color:#3c3c3c; max-width:65ch; margin-bottom:32px; font-size:16px;}
+.meta-row { display: flex; gap: 3rem; flex-wrap: wrap; padding: 2.2rem 3rem; border-bottom: 0.5px solid var(--rule); }
+.meta-label { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; }
+.meta-value { font-size: 0.82rem; color: var(--ink); }
 
-  .compare{
-    display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:16px;
-  }
-  .compare figure{margin:0;}
-  .compare img{width:100%; display:block; border:1px solid var(--line); border-radius:2px;}
-  .compare figcaption{
-    margin-top:10px; font-size:13px; color:var(--gray);
-  }
-  .tag{
-    display:inline-block; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;
-    padding:3px 9px; border-radius:20px; margin-bottom:8px; font-weight:600;
-  }
-  .tag.before{background:#f2ede8; color:#8a6a4f;}
-  .tag.after{background:#fbeae6; color:var(--accent);}
+section { padding: 4rem 3rem; border-bottom: 0.5px solid var(--rule); }
+.section-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+.section-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+.section-rule { flex: 1; height: 0.5px; background: var(--rule); }
+.section-intro { font-size: 0.85rem; line-height: 1.85; color: var(--ink-muted); max-width: 68ch; margin-bottom: 2.5rem; }
 
-  .full-bleed{margin-bottom:64px;}
-  .full-bleed img{width:100%; border:1px solid var(--line); border-radius:2px; display:block;}
-  .full-bleed .cap{margin-top:10px; font-size:13px; color:var(--gray);}
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+.compare figure { margin: 0; }
+.compare img { width: 100%; display: block; border: 0.5px solid var(--rule); }
+.compare figcaption { margin-top: 0.8rem; font-size: 0.75rem; line-height: 1.6; color: var(--ink-muted); }
+.tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 400; }
+.tag.before { color: var(--ink-muted); }
+.tag.after { color: var(--accent); }
 
-  .changelist{list-style:none; margin:0; padding:0;}
-  .changelist li{
-    padding:22px 0; border-top:1px solid var(--line);
-    display:grid; grid-template-columns:180px 1fr; gap:24px;
-  }
-  .changelist li:last-child{border-bottom:1px solid var(--line);}
-  .changelist h3{
-    font-size:15px; margin:0; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink);
-  }
-  .changelist p{margin:0; color:#3c3c3c; font-size:15px;}
+.scroll-gallery { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.scroll-gallery::-webkit-scrollbar { height: 6px; }
+.scroll-gallery::-webkit-scrollbar-track { background: transparent; }
+.scroll-gallery::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+.scroll-gallery figure { flex: 0 0 auto; width: 340px; scroll-snap-align: start; margin: 0; }
+.scroll-gallery img { width: 100%; display: block; border: 0.5px solid var(--rule); }
+.scroll-gallery figcaption { margin-top: 0.7rem; font-size: 0.72rem; color: var(--ink-muted); }
 
-  .stats{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:36px 0;
-  }
-  .stat{border-top:2px solid var(--ink); padding-top:14px;}
-  .stat .num{font-family:var(--serif); font-size:34px; line-height:1;}
-  .stat .num .arrow{color:var(--accent); font-size:22px; margin:0 6px;}
-  .stat .label{font-size:13px; color:var(--gray); margin-top:6px;}
+.full-bleed { margin-bottom: 2.5rem; }
+.full-bleed img { width: 100%; border: 0.5px solid var(--rule); display: block; }
+.full-bleed .cap { margin-top: 0.8rem; font-size: 0.75rem; color: var(--ink-muted); }
 
-  .pull{
-    font-family:var(--serif); font-style:italic; font-size:22px; line-height:1.5;
-    color:#2a2a2a; border-left:2px solid var(--accent); padding-left:24px; margin:40px 0;
-    max-width:60ch;
-  }
+.pull { font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.6; color: var(--ink); border-left: 1px solid var(--accent); padding-left: 1.6rem; margin: 2.5rem 0; max-width: 58ch; }
 
-  footer.site{
-    border-top:1px solid var(--line); padding:40px 0 60px; color:var(--gray); font-size:14px;
-  }
-  footer.site a{color:var(--accent); text-decoration:none;}
+.changelist { list-style: none; }
+.changelist li { padding: 1.8rem 0; border-top: 0.5px solid var(--rule); display: grid; grid-template-columns: 200px 1fr; gap: 2rem; }
+.changelist li:last-child { border-bottom: 0.5px solid var(--rule); }
+.changelist h3 { font-family: var(--serif); font-size: 0.95rem; font-weight: 500; font-style: italic; color: var(--ink); }
+.changelist p { font-size: 0.8rem; line-height: 1.75; color: var(--ink-muted); }
 
-  @media (max-width:720px){
-    h1{font-size:32px;}
-    .compare{grid-template-columns:1fr;}
-    .changelist li{grid-template-columns:1fr; gap:6px;}
-    .stats{grid-template-columns:1fr;}
-    .meta-row{gap:24px;}
-  }
+.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin: 2.5rem 0; }
+.stat { border-top: 1px solid var(--ink); padding-top: 1rem; }
+.stat .num { font-family: var(--serif); font-size: 1.9rem; line-height: 1; }
+.stat .num .arrow { color: var(--accent); font-size: 1.3rem; margin: 0 0.4rem; }
+.stat .label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-top: 0.6rem; }
+
+footer { padding: 2rem 3rem; border-top: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-note { font-size: 0.65rem; color: var(--ink-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.footer-note a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.6rem; }
+  .hero { padding: 2.5rem 1.5rem; }
+  .meta-row { padding: 1.5rem; gap: 1.5rem; }
+  section { padding: 2.5rem 1.5rem; }
+  .compare { grid-template-columns: 1fr; }
+  .scroll-gallery figure { width: 260px; }
+  .changelist li { grid-template-columns: 1fr; gap: 0.5rem; }
+  .stats { grid-template-columns: 1fr; }
+  footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap">
-    <a class="name" href="https://sarafaruqi-ui.github.io/">Sara Faruqi</a>
-    <nav>
-      <a href="https://sarafaruqi-ui.github.io/#writing">Writing</a>
-      <a href="https://sarafaruqi-ui.github.io/#about">About</a>
-    </nav>
+<nav>
+  <a class="nav-name" href="index.html">Sara Faruqi</a>
+  <ul class="nav-links">
+    <li><a href="index.html#video">Video</a></li>
+    <li><a href="index.html#social">Social</a></li>
+    <li><a class="current" href="index.html#case-study">Case Study</a></li>
+    <li><a href="index.html#podcast">Podcast</a></li>
+    <li><a href="index.html#writing">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow">Case Study &middot; UNDP Business Call to Action</p>
+  <h1 class="hero-title">Rebuilding a global brand's <em>front door</em></h1>
+  <p class="hero-desc">Leading the design, development, and rebrand of the Business Call to Action website — turning a dated, static site into a searchable, story-led platform for a network of 280+ companies working across 83 countries.</p>
+</div>
+
+<div class="meta-row">
+  <div>
+    <p class="meta-label">Role</p>
+    <p class="meta-value">Communication Specialist, UNDP</p>
   </div>
-</header>
+  <div>
+    <p class="meta-label">Timeline</p>
+    <p class="meta-value">2020 – 2021</p>
+  </div>
+  <div>
+    <p class="meta-label">Scope</p>
+    <p class="meta-value">Web &middot; Brand &middot; Social</p>
+  </div>
+  <div>
+    <p class="meta-label">Partners</p>
+    <p class="meta-value">Website developer and graphic designer</p>
+  </div>
+</div>
 
-<main class="wrap">
+<section>
+  <div class="section-header">
+    <span class="section-label">The Starting Point</span>
+    <div class="section-rule"></div>
+  </div>
+  <p class="section-intro">By 2020, BCtA's website had grown well past what its original 2015 microsite was built for. The goal of the relaunch was simple: turn it into an easily navigable, modern website that could serve a growing global network.</p>
+  <div class="full-bleed">
+    <img src="2019-hero.jpg" alt="BCtA homepage in 2019, showing stock photography, a five-item nav, and a large orange CTA button">
+    <div class="cap">The BCtA homepage, archived March 2019 — hero banner, member/country/reach counters, and a Twitter feed lower on the page.</div>
+  </div>
+</section>
 
-  <div class="hero">
-    <div class="eyebrow">Case Study · UNDP Business Call to Action</div>
-    <h1>Rebuilding a global brand's <em>front door</em></h1>
-    <p class="dek">Leading the design, development, and rebrand of the Business Call to Action website — turning a dated, static site into a searchable, story-led platform for a network of 280+ companies working across 83 countries.</p>
+<section>
+  <div class="section-header">
+    <span class="section-label">What Changed, and Why It Mattered</span>
+    <div class="section-rule"></div>
+  </div>
+  <ul class="changelist">
+    <li>
+      <h3>About page</h3>
+      <p>Broke one long, multi-topic scroll into distinct, single-purpose sections — mission, inclusive business, team, partners — each scannable in seconds instead of requiring a full read-through.</p>
+    </li>
+    <li>
+      <h3>Navigation</h3>
+      <p>Cut from six top-level items to four, matching how users actually moved through the site rather than how the org chart was structured. Toolkits and Impact — tools mainly used by logged-in members — were consolidated behind a single sign-on under Member Login, clearing them off the public nav entirely.</p>
+    </li>
+    <li>
+      <h3>Visual identity</h3>
+      <p>Retired stock imagery for real member and field photography, introduced a co-branded UNDP lockup, and established a new visual identity across the site with a new brand book and tone-of-voice guide.</p>
+    </li>
+    <li>
+      <h3>Social &amp; brand system</h3>
+      <p>Extended the new identity across BCtA's social channels with a matching template system, so the website and social presence read as one brand for the first time.</p>
+    </li>
+    <li>
+      <h3>Member directory</h3>
+      <p>Paired an interactive map — hover any country to see the members operating there — with a filterable finder searchable by SDG, sector, region, and status across 280+ companies. A real gain in findability, though the resulting paginated list was a known area we'd have liked to modernize further.</p>
+    </li>
+    <li>
+      <h3>Impact reporting</h3>
+      <p>Integrated the Sustainable Development Goals directly into impact reporting, so each member's contribution rolls up into a specific, SDG-aligned figure — turning company-level reporting into a credible story for funders and partners.</p>
+    </li>
+    <li>
+      <h3>Content migration</h3>
+      <p>Migrated years of news, member profiles, and resources from the legacy CMS without losing SEO equity or breaking inbound links.</p>
+    </li>
+  </ul>
+</section>
 
-    <div class="meta-row">
-      <div class="meta-item">
-        <div class="label">Role</div>
-        <div class="value">Communication Specialist, UNDP</div>
-      </div>
-      <div class="meta-item">
-        <div class="label">Timeline</div>
-        <div class="value">2020 – 2021</div>
-      </div>
-      <div class="meta-item">
-        <div class="label">Scope</div>
-        <div class="value">Web · Brand · Social</div>
-      </div>
-      <div class="meta-item">
-        <div class="label">Partners</div>
-        <div class="value">Website developer and graphic designer</div>
-      </div>
+<section>
+  <div class="section-header">
+    <span class="section-label">Before / After</span>
+    <div class="section-rule"></div>
+  </div>
+  <p class="section-intro">The relaunch kept the mission-first framing BCtA was known for, but rebuilt everything underneath it: a co-branded identity with UNDP, a lighter and more editorial visual language, and a structure built to scale as the network grew. Scroll to compare.</p>
+
+  <div class="scroll-gallery">
+    <figure>
+      <span class="tag before">2019</span>
+      <img src="2019-hero.jpg" alt="2019 homepage hero with stock photography and orange become-a-member CTA">
+      <figcaption>Homepage hero</figcaption>
+    </figure>
+    <figure>
+      <span class="tag after">2021</span>
+      <img src="2021-hero.jpg" alt="2021 homepage hero with authentic photography and simplified navigation">
+      <figcaption>Homepage hero</figcaption>
+    </figure>
+    <figure>
+      <span class="tag before">2019</span>
+      <img src="2019-members.jpg" alt="2019 Meet Our Members carousel showing only five logos at a time">
+      <figcaption>Our Members</figcaption>
+    </figure>
+    <figure>
+      <span class="tag after">2021</span>
+      <img src="2021-members-correct.jpg" alt="2021 Our Members page with search, sort, and a full card grid">
+      <figcaption>Our Members</figcaption>
+    </figure>
+    <figure>
+      <span class="tag before">2019</span>
+      <img src="2019-members.jpg" alt="2019 stats block showing 230 members, 70 countries, 200+ million people reached">
+      <figcaption>Impact stats</figcaption>
+    </figure>
+    <figure>
+      <span class="tag after">2021</span>
+      <img src="2021-impact.jpg" alt="2021 SDG-aligned impact breakdown with icons for each goal and specific figures">
+      <figcaption>SDG-aligned impact</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-label">New, Not Just Redesigned</span>
+    <div class="section-rule"></div>
+  </div>
+  <p class="section-intro">Some pieces weren't a facelift — they didn't exist before. An interactive global network map replaced a static graphic, and editorial storytelling replaced the live Twitter embed as the homepage's news anchor.</p>
+  <div class="full-bleed">
+    <img src="2021-network.jpg" alt="Interactive global network map on the 2021 BCtA site, showing member countries highlighted">
+    <div class="cap">The new interactive network map — hover any country to see the members operating there.</div>
+  </div>
+  <div class="full-bleed">
+    <img src="2021-news.jpg" alt="2021 Latest News section with large image-led editorial cards">
+    <div class="cap">Image-led editorial cards replaced the old text-list-plus-live-Twitter-feed homepage layout.</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-header">
+    <span class="section-label">Growth Since Launch</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <div class="num">230 <span class="arrow">&rarr;</span> 280</div>
+      <div class="label">Member companies</div>
+    </div>
+    <div class="stat">
+      <div class="num">70 <span class="arrow">&rarr;</span> 83</div>
+      <div class="label">Countries represented</div>
+    </div>
+    <div class="stat">
+      <div class="num">200M+ <span class="arrow">&rarr;</span> 700M</div>
+      <div class="label">People reached, cumulative</div>
     </div>
   </div>
+  <p class="section-intro">A new site alone doesn't grow a membership network — but a site that's easy to navigate, easy to be found on, and easy to trust removes friction for every company deciding whether to join.</p>
+</section>
 
-  <section>
-    <h2>The starting point</h2>
-    <p class="section-intro">Before the relaunch, BCtA's website was serving a growing global network, but it looked and behaved like a 2015-era microsite. A live embedded Twitter feed anchored the homepage, the visual identity leaned on stock imagery, and the "Meet Our Members" section was a five-logo carousel — a strange bottleneck for a network of hundreds of companies.</p>
-    <div class="full-bleed">
-      <img src="2019-hero.jpg" alt="BCtA homepage in 2019, showing stock photography, a five-item nav, and a large orange CTA button">
-      <div class="cap">The BCtA homepage, archived March 2019 — hero banner, member/country/reach counters, and a Twitter feed lower on the page.</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Before / after</h2>
-    <p class="section-intro">The relaunch kept the mission-first framing BCtA was known for, but rebuilt everything underneath it: a co-branded identity with UNDP, a lighter and more editorial visual language, and a structure built to scale as the network grew.</p>
-
-    <div class="compare">
-      <figure>
-        <span class="tag before">2019</span>
-        <img src="2019-hero.jpg" alt="2019 homepage hero with stock photography and orange become-a-member CTA">
-        <figcaption>Stock photography, a six-item nav, and a hard-sell CTA competing with the mission statement.</figcaption>
-      </figure>
-      <figure>
-        <span class="tag after">2021</span>
-        <img src="2021-hero.jpg" alt="2021 homepage hero with authentic photography and simplified navigation">
-        <figcaption>Authentic member photography, co-branded UNDP lockup, and a four-item nav that mirrors how members actually use the site.</figcaption>
-      </figure>
-    </div>
-
-    <div class="compare">
-      <figure>
-        <span class="tag before">2019</span>
-        <img src="2019-members.jpg" alt="2019 Meet Our Members carousel showing only five logos at a time">
-        <figcaption>A five-logo carousel was the only way to browse the entire member network.</figcaption>
-      </figure>
-      <figure>
-        <span class="tag after">2021</span>
-        <img src="2021-members-filter.jpg" alt="2021 member finder with filters for SDG, Sector, Region, and Status, showing a paginated list of member cards">
-        <figcaption>Filterable by SDG, sector, region, and status — a real improvement in findability, though the paginated, list-style results were still clunkier than a true directory.</figcaption>
-      </figure>
-    </div>
-
-    <div class="pull">"Meet Our Members" went from a five-logo carousel to a filterable finder covering 280 companies. It was a genuine improvement in findability — even if the paginated list that resulted still had room to feel more modern.</div>
-
-    <div class="compare">
-      <figure>
-        <span class="tag before">2019</span>
-        <img src="2019-members.jpg" alt="2019 stats block showing 230 members, 70 countries, 200+ million people reached">
-        <figcaption>Impact was communicated as three flat counters: members, countries, people reached.</figcaption>
-      </figure>
-      <figure>
-        <span class="tag after">2021</span>
-        <img src="2021-impact.jpg" alt="2021 SDG-aligned impact breakdown with icons for each goal and specific figures">
-        <figcaption>Impact reporting broken out by Sustainable Development Goal, with specific, sourced figures for each.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section>
-    <h2>New, not just redesigned</h2>
-    <p class="section-intro">Some pieces weren't a facelift — they didn't exist before. An interactive global network map replaced a static graphic, and editorial storytelling replaced the live Twitter embed as the homepage's news anchor.</p>
-    <div class="full-bleed">
-      <img src="2021-network.jpg" alt="Interactive global network map on the 2021 BCtA site, showing member countries highlighted">
-      <div class="cap">The new interactive network map — click any country to see the members operating there.</div>
-    </div>
-    <div class="full-bleed">
-      <img src="2021-news.jpg" alt="2021 Latest News section with large image-led editorial cards">
-      <div class="cap">Image-led editorial cards replaced the old text-list-plus-live-Twitter-feed homepage layout.</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Making "About" actually explain something</h2>
-    <p class="section-intro">The old About page tried to do everything in one scroll: mission, history, donor list, team, and a full explainer on inclusive business, all as unbroken paragraphs under a row of tiny circular icons that acted as an in-page jump menu. A visitor had to read several paragraphs before finding out what BCtA actually did.</p>
-
-    <div class="compare">
-      <figure>
-        <span class="tag before">2019</span>
-        <img src="2019-about-hero.jpg" alt="2019 About BCtA page with dense paragraphs of text and a row of small circular icon links">
-        <figcaption>The page opened with a wall of text under six small icon-links — no clear starting point, no visual hierarchy.</figcaption>
-      </figure>
-      <figure>
-        <span class="tag after">2021</span>
-        <img src="2021-about-hero.jpg" alt="2021 About BCtA page with a short headline, one clear sentence, and a supporting photograph">
-        <figcaption>One headline, one sentence, one photo. The mission is legible in under five seconds.</figcaption>
-      </figure>
-    </div>
-
-    <div class="compare">
-      <figure>
-        <span class="tag before">2019</span>
-        <img src="2019-about-content.jpg" alt="2019 Inclusive Business and SDGs section, a long paragraph followed by a five-icon list with no visual separation">
-        <figcaption>Inclusive business, SDG figures, and member criteria were all folded into one long paragraph.</figcaption>
-      </figure>
-      <figure>
-        <span class="tag after">2021</span>
-        <img src="2021-about-content.jpg" alt="2021 What Is Inclusive Business section, a short definition next to a photo with a clear call to action">
-        <figcaption>Split into distinct, photo-paired sections — each answering one question, with its own call to action.</figcaption>
-      </figure>
-    </div>
-
-    <div class="compare">
-      <figure>
-        <span class="tag before">2019</span>
-        <img src="2019-about-team.jpg" alt="2019 Our Team section, small circular headshots in a plain grid with name and title only">
-        <figcaption>Team bios were a flat grid of circular headshots — no context on the org structure.</figcaption>
-      </figure>
-      <figure>
-        <span class="tag after">2021</span>
-        <img src="2021-about-team.jpg" alt="2021 Our Team section, larger rectangular photos with clear name and role labels, grouped by section">
-        <figcaption>Larger photos, clearer role labels, and grouping that shows how the team is actually organized.</figcaption>
-      </figure>
-    </div>
-
-    <div class="pull">The goal wasn't to shorten the About page — it was to make every section answer one question, so a visitor never had to read a paragraph to find out what they'd just landed on.</div>
-  </section>
-
-  <section>
-    <h2>What changed, and why it mattered</h2>
-    <ul class="changelist">
-      <li>
-        <h3>About page</h3>
-        <p>Broke one long, multi-topic scroll into distinct, single-purpose sections — mission, inclusive business, team, partners — each scannable in seconds instead of requiring a full read-through.</p>
-      </li>
-      <li>
-        <h3>Navigation</h3>
-        <p>Cut from six top-level items to four, matching how members actually moved through the site rather than how the org chart was structured. Toolkits and Impact — tools mainly used by logged-in members — were consolidated behind a single sign-on under Member Login, clearing them off the public nav entirely.</p>
-      </li>
-      <li>
-        <h3>Visual identity</h3>
-        <p>Retired stock imagery for real member and field photography, and introduced a co-branded UNDP lockup — done in partnership with a branding agency, alongside a new brand book and tone-of-voice guide.</p>
-      </li>
-      <li>
-        <h3>Member directory</h3>
-        <p>Replaced the five-logo carousel with a filterable member finder — searchable by SDG, sector, region, and status across 280+ companies. A real gain in findability, though the resulting paginated list was a known area we'd have liked to modernize further.</p>
-      </li>
-      <li>
-        <h3>Impact reporting</h3>
-        <p>Moved from three flat counters to a full breakdown by Sustainable Development Goal, giving funders and partners a credible, specific story.</p>
-      </li>
-      <li>
-        <h3>Content migration</h3>
-        <p>Migrated years of news, member profiles, and resources from the legacy CMS without losing SEO equity or breaking inbound links.</p>
-      </li>
-      <li>
-        <h3>Social &amp; brand system</h3>
-        <p>Extended the new identity across BCtA's social channels with a matching template system, so the website and social presence read as one brand for the first time.</p>
-      </li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Growth since launch</h2>
-    <div class="stats">
-      <div class="stat">
-        <div class="num">230 <span class="arrow">→</span> 280</div>
-        <div class="label">Member companies</div>
-      </div>
-      <div class="stat">
-        <div class="num">70 <span class="arrow">→</span> 83</div>
-        <div class="label">Countries represented</div>
-      </div>
-      <div class="stat">
-        <div class="num">200M+ <span class="arrow">→</span> 700M</div>
-        <div class="label">People reached, cumulative</div>
-      </div>
-    </div>
-    <p class="section-intro">A new site alone doesn't grow a membership network — but a site that's easy to navigate, easy to be found on, and easy to trust removes friction for every company deciding whether to join.</p>
-  </section>
-
-  <section>
-    <h2>Extending the system</h2>
-    <p class="section-intro">The new design system was built to be reused, not just admired. When BCtA launched the <a href="https://www.businesscalltoaction.org/inclusive-innovation-journey-" target="_blank" rel="noopener">Inclusive Innovation Journey</a> program, I designed its page using the templates from the relaunch — proof the new system could support new initiatives without starting from scratch each time.</p>
-  </section>
-
-</main>
-
-<footer class="site">
-  <div class="wrap">
-    Case study by Sara Faruqi · <a href="https://sarafaruqi-ui.github.io/">Back to portfolio ↗</a>
+<section style="border-bottom: none;">
+  <div class="section-header">
+    <span class="section-label">Extending the System</span>
+    <div class="section-rule"></div>
   </div>
+  <p class="section-intro">The new design system was built to be reused, not just admired. When BCtA launched the <a href="https://www.businesscalltoaction.org/inclusive-innovation-journey-" target="_blank" rel="noopener" style="color:var(--accent);">Inclusive Innovation Journey</a> program, I designed its page using the templates from the relaunch — proof the new system could support new initiatives without starting from scratch each time.</p>
+</section>
+
+<footer>
+  <p class="footer-note">Case study by Sara Faruqi &middot; <a href="index.html">Back to portfolio &#8599;</a></p>
 </footer>
 
 </body>
